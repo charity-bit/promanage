@@ -1,0 +1,64 @@
+.container-fluid{
+    display: flex;
+    border: 1px solid #015959;
+    border-radius: 5px;
+}
+
+.side-bar{
+    width: 25vw;
+    background-color: #015959;
+    height: 100vh;
+    max-height: 120vh;
+}
+
+.container{
+    padding: 5px;
+}
+
+.form_title{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 5vw;
+    border-bottom: 1px solid #015959;
+}
+
+.circle{
+    height: 20px;
+    width: 20px;
+    background-color: #015959;
+    border-radius: 50%;
+}
+
+h3{
+    color: #015959;
+}
+
+hr{
+    height: 2px;
+    background-color: #015959;
+}
+
+form{
+    color: #015959;
+    margin-top: 5vh;
+}
+
+input,
+input:active,
+input:focus{
+    outline: none !important;
+    border: 1px solid #015959 !important;
+    color: #015959;
+}
+
+textarea{
+    height: 30vh !important;
+    border: 1px solid #015959 !important;
+}
+
+input[type='submit']{
+    background-color: #015959;
+    color: #ffffff;
+    margin-top: 10px;
+}
