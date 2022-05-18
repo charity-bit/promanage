@@ -146,7 +146,7 @@
       <section id="project-name">
         <div class="name-cont">
           <div class="circle"></div>
-          <p>PROMANAGE PROJECT</p>
+          <p>{{project.name}}</p>
         </div>
         <hr />
       </section>
@@ -155,15 +155,7 @@
           <div class="details-cont">
             <h3>description</h3>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text ever
-              since the 1500s, when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book. It has survived not only
-              five centuries, but also the leap into electronic typesetting,
-              remaining essentially unchanged. It was popularised in the 1960s with
-              the release of Letraset sheets containing Lorem Ipsum passages, and
-              more recently with desktop publishing software like Aldus PageMaker
-              including versions of Lorem Ipsum.
+             {{project.description}}
             </p>
 
           </div>
@@ -226,7 +218,7 @@
                 </div>
 
                 <div class="date">
-                <p>15<sup>th</sup> January 2022</p>
+                <p>{{project.start_date | format_date()}}</p>
                 </div>
               </div>
               <div class="end">
@@ -235,7 +227,7 @@
                        <p>Completion of the project</p>
                   </div>
                   <div class="date">
-                      <p>12<sup>th</sup> August 2022</p>
+                      <p>{{project.completion_date | format_date()}}</p>
                   </div>
               </div>
 

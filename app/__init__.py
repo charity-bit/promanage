@@ -39,4 +39,13 @@ def create_app(config_name):
     app.register_blueprint(main_blueprint)
 
 
+
+    @app.template_filter()
+    def format_date(value):
+        months = ('January','February','March','April','May','June','July','August','September','October','November','December')
+        month = months[value.month- 1]
+        #  posted June 22 2022 at 
+        return "{} {} {}".format(month,value.day,value.year)
+
+
     return app

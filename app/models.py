@@ -1,5 +1,6 @@
 from . import db,login_manager
 from werkzeug.security import generate_password_hash,check_password_hash
+from sqlalchemy.sql import func
 from flask_login import UserMixin
 
 
@@ -18,6 +19,7 @@ class User(UserMixin,db.Model):
     pic_path = db.Column(db.String(255),default='avtar.png')
     email = db.Column(db.String(255),nullable = False,unique = True)
     secure_password = db.Column(db.String(255),nullable = False) 
+    projects =  db.relationship('Project',backref = 'user',passive_deletes = True)
    
     def save_user(self):
         db.session.add(self)
@@ -40,3 +42,53 @@ class User(UserMixin,db.Model):
         return f'User: {self.fullname} {self.email}'
 
 
+class Project(db.Model):
+
+    __tablename__ = 'projects'
+
+    id = db.Column(db.Integer,primary_key = True)
+    name = db.Column(db.String(255),nullable = False)
+    alias = db.Column(db.String(255),nullable = False)
+    description = db.Column(db.Text,nullable = False)
+    start_date = db.Column(db.DateTime(timezone = True),default = func.now())
+    completion_date = db.Column(db.DateTime(timezone = True))
+    iscomplete = db.Column(db.Boolean,default= False)
+    owner_id = db.Column(db.Integer,db.ForeignKey('users.id',ondelete="CASCADE"),nullable = False)
+    projects =  db.relationship('SubTask',backref = 'project',passive_deletes = True)
+
+
+    def save_project(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def remove_project(self):
+        db.session.delete(self)
+        db.session.commit()
+
+
+class SubTask(db.Model):
+
+    __tablename__ = 'projects'
+
+    id = db.Column(db.Integer,primary_key = True)
+    name = db.Column(db.String(255),nullable = False)
+    description = db.Column(db.Text,nullable = False)
+    start_date = db.Column(db.DateTime(timezone = True),default = func.now())
+    completion_date = db.Column(db.DateTime(timezone = True))
+    iscomplete = db.Column(db.Boolean,default= False)
+    project_id = db.Column(db.Integer,db.ForeignKey('projects.id',ondelete="CASCADE"),nullable = False)
+
+
+    def save_project(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def remove_project(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    
+
+    
+
+  
