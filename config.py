@@ -3,6 +3,7 @@ class Config:
     
     SECRET_KEY = "4545"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:qwertyip@localhost/promanage'
 
 class ProdConfig(Config):
 

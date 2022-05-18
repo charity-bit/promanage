@@ -88,11 +88,12 @@
         </section>
   
         <section id="tasks">
-
+             
             <div class="tasks">
             
-            
+               
                 <h3>My tasks</h3>
+                {% for project in projects%}
                 <div class="tasks-cont">
                         <a class="task"
                            data-bs-toggle="collapse"
@@ -103,8 +104,8 @@
                     
                            <div class="details">
                                <div class="top">
-                                <h2>PROMANAGE PROJECT</h2>
-                                <a href="#">See all Details <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="m6.5 17.5l8.25-5.5L6.5 6.5l1-1.5L18 12L7.5 19z"/></svg></a>
+                                <h2>{{project.name}}</h2>
+                                <a href="{{url_for('main.project_details',id = project.id)}}">See all Details <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="m6.5 17.5l8.25-5.5L6.5 6.5l1-1.5L18 12L7.5 19z"/></svg></a>
               
                                 </div>
                                 <div class="bottom">
@@ -137,6 +138,8 @@
                     
                    
                 </div>
+
+                {% endfor %}
             </div>
             
   

@@ -197,6 +197,11 @@ ul li a {
   color: #015959;
 }
 
+.tasks{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 .tasks-cont {
   display: flex;
   flex-direction: column;
