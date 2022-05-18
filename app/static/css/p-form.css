@@ -1,16 +1,54 @@
-.container-fluid{
+body {
     display: flex;
-    border: 1px solid #015959;
-    border-radius: 5px;
-}
-
-.side-bar{
-    width: 25vw;
+  }
+header {
     background-color: #015959;
-    height: 100vh;
-    max-height: 120vh;
+    width: 20%;
+    min-height: 100vh;
+    text-align: left;
 }
-
+main {
+  width: 80% !important;
+  overflow-x: hidden;
+}
+  
+nav {
+  margin-top: 10%;
+  width: 80%;
+  margin: 0 auto;
+}
+  
+.logo {
+    margin: 15% 10%;
+}
+.logo p {
+    font-family: "Koulen", sans-serif;
+    font-weight: 700;
+    font-size: 2vw;
+    color: white;
+}
+  
+.logo p span {
+    font-size: 1vw;
+}
+.main-mu {
+    color: white;
+    margin: 10% 0;
+}
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    list-style: none;
+}
+ul li a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+}
+  
 .container{
     padding: 5px;
 }
