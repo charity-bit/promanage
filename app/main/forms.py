@@ -21,14 +21,7 @@ class SubtaskForm(FlaskForm):
 class MemberForm(FlaskForm):
 
     email = EmailField('Enter Email of member', validators=[DataRequired()])
-
     submit = SubmitField('Add member')
-
-    def validate_email(self, data_field):
-
-        if User.query.filter_by(email = data_field.data).first() is not True:
-
-            raise ValidationError('User does not exist')
 
 class EditForm(FlaskForm):
 
