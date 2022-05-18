@@ -1,6 +1,109 @@
-body{
-    background-image: url(https://images.unsplash.com/photo-1513542992587-cd39ba97057c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzV8fGJsb2clMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60);
-    background-repeat: no-repeat;
+*{
+    font-family: sans-serif;
+}
+
+.navbar{
+    background-color: #015959;
+
+}
+
+.container-l {
+    background: linear-gradient(to top, #000000bb, #000000a4), url('../assets/landing.jpg');
     background-size: cover;
-    background-position:
+    padding-bottom: 15vh;
+}
+
+
+
+.container-l h1{
+    color: white;
+    padding-top: 15%;
+    padding-bottom: 5%;
+}
+
+.container-l p{
+    color: #fffff1;
+}
+
+.btn1{
+    background-color: #015959;
+    color: white;
+    font-size: 24px;
+    margin-top: 1rem;
+}
+
+.col-md-6-2{
+    background-image: url('../assets/card1.png');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    border: 1px solid #015959;
+    margin-bottom: 5rem;
+}
+.col-md-6-3{
+    background-image: url('../assets/card2.png');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    border: 1px solid #015959;
+    margin-bottom: 5rem;
+
+}
+.col-md-6-4{
+    background-image: url('../assets/card3.png');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    border: 1px solid #015959;
+    margin-bottom: 5rem;
+
+}
+
+h1{
+    color: #015959;
+}
+
+.container2{
+    padding: 5% 0;
+}
+
+footer{
+    background-color: #015959;
+    color: white;
+}
+
+footer a{
+    text-decoration: none;
+    color: white;
+}
+
+i{
+    margin: 0 .5rem;
+}
+
+@media screen and (min-width: 991px) {
+
+    .navbar-nav{
+        position: absolute;
+        left: 85%;
+        transform: translateX(-85%);
     }
+
+    ul:nth-child(1) li:nth-child(1){
+        border: 1px solid white;
+    }
+
+    .container-l h1{
+        font-size: 72px;
+        color: white;
+    }
+    
+    .container-l p{
+        font-size: 20px;
+    }
+
+    .col-md-6-1{
+        margin-left: 6rem;
+    }
+    
+}
