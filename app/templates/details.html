@@ -158,11 +158,18 @@
              {{project.description}}
             </p>
 
+           
+
           </div>
      
       </section>
       <section id="roles">
          <h3 class="ttl">Project Roles</h3>
+
+         <li>
+          <a href="{{ url_for('main.edit', project_id = project.id) }}">EDIT</a>
+          <a href="{{ url_for('main.delete', project_id = project.id) }}">DELETE</a>
+        </li>
           
           <div class="roles-cont">
            

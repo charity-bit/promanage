@@ -1,9 +1,10 @@
 import datetime
-from flask import render_template,flash,redirect,url_for
-from sqlalchemy import alias
+from unicodedata import name
+from flask import render_template,flash,redirect,url_for, request
 from . import main
-from . forms import ProjectForm, SubtaskForm, MemberForm
-from flask_login import current_user
+from . forms import ProjectForm, SubtaskForm, MemberForm, EditForm, DeleteForm
+from flask_login import current_user, login_required
+from app import db
 
 from ..models import Project,User
 
@@ -13,6 +14,7 @@ def index():
     return render_template('index.html')
 
 @main.route('/project/new',methods=['POST','GET'])
+@login_required
 def new_project():
 
     form = ProjectForm()
@@ -51,11 +53,12 @@ def new_project():
             new_project = Project(name = project_name,alias = project_alias,description = project_details,owner_id = current_user.id,completion_date = completion_date )
             new_project.save_project()
             
-            return redirect(url_for('main.index'))
+            return redirect(url_for('main.home'))
 
     return render_template('new_project.html', form = form)
 
 @main.route('/home')
+@login_required
 def home():
 
     projects = Project.query.all()
@@ -63,6 +66,7 @@ def home():
     return render_template('home.html',projects = projects)
 
 @main.route('/project/details/<int:id>')
+@login_required
 def project_details(id):
     project = Project.query.filter_by(id = id).first()
     current_user_id = current_user.id
@@ -73,6 +77,7 @@ def project_details(id):
     return render_template('details.html',id = id,project = project)
 
 @main.route('/project/subtask',methods=['POST','GET'])
+@login_required
 def subtask():
 
     subtasks_form = SubtaskForm()
@@ -80,9 +85,48 @@ def subtask():
     return render_template('subtasks.html', subtasks_form = subtasks_form)
 
 @main.route('/project/add-member',methods=['POST','GET'])
+@login_required
 def member():
 
     member_form = MemberForm()
 
     return render_template('member.html', member_form = member_form)
+
+@main.route('/project/edit/<int:project_id>',methods = ['GET','POST'])
+@login_required
+def edit(project_id):
+    edit_form = EditForm()
+
+    project = Project.query.get_or_404(project_id)
+    if request.method == 'GET':
+        edit_form.name.data = project.name
+        edit_form.uploader.data = project.alias
+        edit_form.details.data = project.description
+        edit_form.completion_date.data = project.completion_date
+        return render_template('edit_project.html', edit_form = edit_form, project = project)
+
+
+    elif request.method == 'POST':
+        project.name = edit_form.name.data
+        db.session.commit()
+        return render_template('edit_project.html', edit_form = edit_form, project = project)
+
+
+    else:
+        return render_template('edit_project.html', edit_form = edit_form, project = project)
+
+
+@main.route('/project/delete/<int:project_id>', methods=['GET','POST'])
+def delete(project_id):
+
+     project = Project.query.get_or_404(project_id)
+
+     db.session.delete(project)
+     db.session.commit()
+
+     return redirect(url_for('main.home'))
+
+
+
+
 
