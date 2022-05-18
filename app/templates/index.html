@@ -1,27 +1,40 @@
-{% extends 'base.html' %}
-{% block content %}
-{% block styles %}
-{{super()}}
-<link rel="stylesheet" href="static/css">
-{% endblock %}
-<div class="navbar navbar-inverse" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            
-            <a class="navbar-brand" href="/"> PROmanage</a>
-        </div>
-        <div class="navbar-collapse ">
-            <ul class="nav navbar-nav navbar-left">
-             <li><a href=""></a></li> 
-              <li><a href="">Profile</a></li> 
-              <li><a href="">Sign out</a></li>
-              <li><a href="">Sign in</a></li>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promanage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/index.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand text-white ms-5 ps-5" href="#">PRO<span>manage</span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item me-5 rounded">
+                <a class="nav-link text-white" href="/register">Sign Up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link  text-white" href="/login">Login</a>
+              </li>
             </ul>
-
+          </div>
         </div>
-          
-    </div>
-</div>
-{% endblock %}
-
-
+      </nav>
+      <div class="container-l">
+          <div class="col-md-6">
+              <h1 class="">The Ultimate Project Manager</h1>
+              <p class="">Are you procastinating and not able to finish your projects fully?</p>
+              <p class="">Sign Up and get access to a service that helps you manage your projects, track their progress and also feel motivated by our large and friendly community.</p>
+              <a href="/register" class="btn btn1">Get Started</a>
+          </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
