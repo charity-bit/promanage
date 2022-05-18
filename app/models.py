@@ -68,7 +68,7 @@ class Project(db.Model):
 
 class SubTask(db.Model):
 
-    __tablename__ = 'projects'
+    __tablename__ = 'subtasks'
 
     id = db.Column(db.Integer,primary_key = True)
     name = db.Column(db.String(255),nullable = False)

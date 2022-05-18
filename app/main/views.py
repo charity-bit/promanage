@@ -2,7 +2,7 @@ import datetime
 from flask import render_template,flash,redirect,url_for
 from sqlalchemy import alias
 from . import main
-from . forms import ProjectForm
+from . forms import ProjectForm, SubtaskForm, MemberForm
 from flask_login import current_user
 
 from ..models import Project,User
@@ -71,3 +71,18 @@ def project_details(id):
         flash("project cannot be found")
 
     return render_template('details.html',id = id,project = project)
+
+@main.route('/project/subtask',methods=['POST','GET'])
+def subtask():
+
+    subtasks_form = SubtaskForm()
+
+    return render_template('subtasks.html', subtasks_form = subtasks_form)
+
+@main.route('/project/add-member',methods=['POST','GET'])
+def member():
+
+    member_form = MemberForm()
+
+    return render_template('member.html', member_form = member_form)
+
