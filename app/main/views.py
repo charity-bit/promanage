@@ -13,3 +13,8 @@ def new_project():
     form = ProjectForm()
 
     return render_template('new_project.html', form = form)
+
+@main.route('/home')
+def home():
+
+    return render_template('home.html')
