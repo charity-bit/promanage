@@ -64,7 +64,7 @@ def home():
     # query state projects
     # Todo: remember to query projects from Members
     #and loop to compare both user_id and project_id
-    # avoid double enteries in teams
+    #to avoid double enteries in teammembers
     completeprojects =Project.query.filter_by( iscomplete = True)
     not_completeprojects = Project.query.filter_by(iscomplete = False)
 
