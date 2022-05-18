@@ -5,7 +5,7 @@ from . forms import ProjectForm
 @main.route('/')
 def index():
 
-    return render_template('index.html')
+    return render_template('home.html')
 
 @main.route('/project/new')
 def new_project():
