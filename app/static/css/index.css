@@ -4,6 +4,7 @@
 
 .navbar{
     background-color: #015959;
+
 }
 
 .container-l {
@@ -30,6 +31,54 @@
     font-size: 24px;
 }
 
+.col-md-6-2{
+    background-image: url('../assets/card1.png');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    border: 1px solid #015959;
+    margin-bottom: 5rem;
+}
+.col-md-6-3{
+    background-image: url('../assets/card2.png');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    border: 1px solid #015959;
+    margin-bottom: 5rem;
+
+}
+.col-md-6-4{
+    background-image: url('../assets/card3.png');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    border: 1px solid #015959;
+    margin-bottom: 5rem;
+
+}
+
+h1{
+    color: #015959;
+}
+
+.container2{
+    padding: 5% 0;
+}
+
+footer{
+    background-color: #015959;
+    color: white;
+}
+
+footer a{
+    text-decoration: none;
+    color: white;
+}
+
+i{
+    margin: 0 .5rem;
+}
 
 @media screen and (min-width: 991px) {
 
@@ -39,7 +88,7 @@
         transform: translateX(-85%);
     }
 
-    li:nth-child(1){
+    ul:nth-child(1) li:nth-child(1){
         border: 1px solid white;
     }
 
@@ -52,7 +101,7 @@
         font-size: 20px;
     }
 
-    .col-md-6{
+    .col-md-6-1{
         margin-left: 6rem;
     }
     
