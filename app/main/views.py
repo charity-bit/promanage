@@ -28,6 +28,7 @@ def new_project():
         completion_year = completion_date.year
         completion_day = completion_date.day
 
+        
         now = datetime.datetime.now()
         completion_object = datetime.datetime(completion_year,completion_month,completion_day)
 
@@ -60,7 +61,40 @@ def home():
 
     projects = Project.query.all()
 
-    return render_template('home.html',projects = projects)
+    # query state projects
+    completeprojects =Project.query.filter_by( iscomplete = True)
+    not_completeprojects = Project.query.filter_by(iscomplete = False)
+
+
+    iscomplete = completeprojects.count()
+    notcomplete = not_completeprojects.count()
+    
+    
+    for project in projects:
+        completion_date = project.completion_date
+        
+        # destructing completion date
+        completion_month = completion_date.month
+        completion_year = completion_date.year
+        completion_day = completion_date.day
+
+        now = datetime.datetime.now()
+        completion_object = datetime.datetime(completion_year,completion_month,completion_day)
+
+        if completion_object > now:
+            project.iscomplete = False
+
+        else:
+            project.iscomplete = True
+
+
+        project.save_project()
+        
+
+         
+
+
+    return render_template('home.html',projects = projects,iscomplete  = iscomplete,notcomplete = notcomplete)
 
 @main.route('/project/details/<int:id>')
 def project_details(id):
