@@ -10,6 +10,35 @@
 
 {% block content %}
 <header>
+    {% with messages = get_flashed_messages(with_categories = True) %}
+
+{% if messages %}
+
+ {% for category,message in messages %}
+
+ {% if category == 'error' %}
+ <div class="alert alert-danger alert-dismissible fade show position-absolute">
+   {{message}}
+   <button type="button"
+   class="btn-close" data-bs-dismiss ="alert">
+   </button>
+  </div>
+
+  {% else %}
+
+  <div class="alert alert-success alert-dismissible fade show position-absolute">
+   {{message}}
+   <button type="button"
+   class="btn-close" data-bs-dismiss ="alert">
+   </button>
+  </div>
+
+  {% endif %}
+
+ {% endfor %}
+{% endif %}
+
+{% endwith %}
     <nav>
         <div class="logo">
              <p>PRO<span>MANAGE</span></p>
@@ -22,6 +51,13 @@
             <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32"><g fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13 2v4l-2 1l-3-3l-4 4l3 3l-1 2H2v6h4l1 2l-3 3l4 4l3-3l2 1v4h6v-4l2-1l3 3l4-4l-3-3l1-2h4v-6h-4l-1-2l3-3l-4-4l-3 3l-2-1V2Z"/><circle cx="16" cy="16" r="4"/></g></svg><p>Settings</p></a></li>
             <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m16.719 19.752l-.64-5.124A3 3 0 0 0 13.101 12h-2.204a3 3 0 0 0-2.976 2.628l-.641 5.124A2 2 0 0 0 9.266 22h5.468a2 2 0 0 0 1.985-2.248Z"/><circle cx="12" cy="5" r="3"/><circle cx="4" cy="9" r="2"/><circle cx="20" cy="9" r="2"/><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h-.306a2 2 0 0 0-1.973 1.671l-.333 2A2 2 0 0 0 3.361 20H7m13-6h.306a2 2 0 0 1 1.973 1.671l.333 2A2 2 0 0 1 20.639 20H17"/></g></svg><p>People</p></a></li>
             <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 20v-8m0 0V4m0 8h8m-8 0H4"/></svg><p>Create</p></a></li>
+            <li>
+                <a href="{{url_for('auth.logout')}}"
+                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3 5c0-1.1.9-2 2-2h8v2H5v14h8v2H5c-1.1 0-2-.9-2-2V5Zm14.176 6L14.64 8.464l1.414-1.414l4.95 4.95l-4.95 4.95l-1.414-1.414L17.176 13H10.59v-2h6.586Z"/></svg>
+                  <p>Logout</p></a
+                >
+              </li>
         </ul>
     </nav>
   </header>

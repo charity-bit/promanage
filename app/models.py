@@ -20,6 +20,7 @@ class User(UserMixin,db.Model):
     email = db.Column(db.String(255),nullable = False,unique = True)
     secure_password = db.Column(db.String(255),nullable = False) 
     projects =  db.relationship('Project',backref = 'user',passive_deletes = True)
+    members =  db.relationship('TeamMembers',backref = 'user')
    
     def save_user(self):
         db.session.add(self)
@@ -54,7 +55,9 @@ class Project(db.Model):
     completion_date = db.Column(db.DateTime(timezone = True))
     iscomplete = db.Column(db.Boolean,default= False)
     owner_id = db.Column(db.Integer,db.ForeignKey('users.id',ondelete="CASCADE"),nullable = False)
-    projects =  db.relationship('SubTask',backref = 'project',passive_deletes = True)
+    subtasks =  db.relationship('SubTask',backref = 'project',passive_deletes = True)
+    members =  db.relationship('TeamMembers',backref = 'project')
+
 
 
     def save_project(self):
@@ -79,13 +82,38 @@ class SubTask(db.Model):
     project_id = db.Column(db.Integer,db.ForeignKey('projects.id',ondelete="CASCADE"),nullable = False)
 
 
-    def save_project(self):
+
+    def save_subtask(self):
         db.session.add(self)
         db.session.commit()
 
-    def remove_project(self):
+    def remove_subtask(self):
         db.session.delete(self)
         db.session.commit()
+
+class TeamMembers(db.Model):
+    __tablename__ = 'members'
+
+    id = db.Column(db.Integer,primary_key = True)
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable = False)
+    project_id = db.Column(db.Integer,db.ForeignKey('projects.id'),nullable = False)
+
+    def save_member(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def remove_member(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    
+
+ 
+
+
+
+
+
 
     
 
