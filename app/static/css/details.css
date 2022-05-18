@@ -1,0 +1,269 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Koulen&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
+body {
+  display: flex;
+}
+header {
+    background-color: #015959;
+    width: 20%;
+    min-height: 100%;
+    position: fixed;
+    text-align: left;
+  }
+  main {
+    width: 80% !important;
+    margin-left: 20%;
+  }
+nav {
+  margin-top: 10%;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.logo {
+  margin: 15% 10%;
+}
+.logo p {
+  font-family: "Koulen", sans-serif;
+  font-weight: 700;
+  font-size: 2vw;
+  color: white;
+}
+
+.logo p span {
+  font-size: 1vw;
+}
+.main-mu {
+  color: white;
+  margin: 10% 0;
+}
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+}
+ul li a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: white;
+}
+
+#project-name {
+  width: 80%;
+  margin: 5% auto;
+}
+
+#project-name .name-cont{
+    display: flex;
+    gap:20px;
+    padding: 2% 0;
+    align-items: center;
+    position: relative;
+}
+
+#project-name .name-cont .circle{
+    width:16px;
+  
+    height: 16px;
+    background-color: #015959;
+    border-radius: 50%;
+}
+
+#project-name .name-cont p{
+    color: #015959;
+    font-size: 2vw;
+    font-weight: 600;
+}
+
+/* project description */
+
+#description{
+  width: 70%;
+  margin: 5% auto;
+}
+
+.title{
+    color:#015959;
+    font-weight: 600;
+    font-size: 1.5vw;
+    margin-left: 10%;
+    margin-top:-3%;
+}
+
+ .details-cont h3{
+    font-weight: 500;
+    color: #015959;
+    font-size: 1.2vw;
+}
+.details-cont p{
+    text-align: justify;
+    margin-top: 2%;
+    font-size: 1.1vw;
+}
+
+/* project roles */
+
+#roles{
+  width: 70%;
+  margin: 5% auto;
+}
+#roles h3{
+    font-weight: 500;
+    color: #015959;
+    font-size: 1.2vw;
+
+}
+.roles-cont{
+    display: flex;
+    width:100%;
+    gap:40px;
+    margin-top: 5%;
+}
+
+.add{
+    width:20%;
+    margin:0 auto;
+    
+}
+.add a{
+    display: flex;
+    gap:10px;
+    align-items: center;
+    text-decoration: none;
+}
+.add a svg{
+    font-size: 24px;
+    color:#015959;
+}
+.add a small{
+    color: black;
+    font-size: 1vw;
+}
+.members{
+    display: flex;
+    flex-wrap: wrap;
+    width:80%;
+    gap:40px;
+    margin:0 auto;
+   
+}
+
+.member{
+    display: flex;
+    gap:15px;
+    align-items: center;
+    text-decoration: none;
+    width: 45%;
+}
+.member svg{
+    font-size: 32px;
+    color:#015959;
+}
+.member small{
+    color: black;
+    font-size: .7vw;
+    color: rgba(0, 0, 0, 0.50);
+}
+.m-name h4{
+    font-size: 1vw;
+}
+
+
+
+#timelines {
+  width: 80%;
+  margin: 5% auto;
+}
+
+.t-time{
+    color:#015959;
+    font-weight: 600;
+    font-size: 1.5vw;
+
+}
+.start{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin: 3% 0;
+}
+.start .desc a {
+    color: white;
+    background-color: #015959;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2%;
+
+}
+.end{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    
+}
+.end .desc a{
+    color: white;
+    background-color: #015959;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2%;
+}
+.desc{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 50%;
+}
+.desc p,.date p{
+    font-size: 1vw;
+}
+.start::before{
+    content: "";
+    position: absolute;
+    background-color: #015959;
+    height: 3px;
+    opacity: 0.34;
+    width: 100%;
+    top:-25%;
+}
+.end::before{
+    content: "";
+    position: absolute;
+    background-color: #015959;
+    height: 3px;
+    width: 100%;
+    opacity: 0.34;
+    top:-25%;
+}
+
+.end::after{
+    content: "";
+    position: absolute;
+    background-color: #015959;
+    opacity: 0.34;
+    height: 3px;
+    width: 100%;
+    bottom:-25%;
+
+}
+
+  hr{
+      height: 3px;
+      background-color:#015959;
+  }
+
+  

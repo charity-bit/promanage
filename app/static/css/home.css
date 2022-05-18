@@ -14,10 +14,12 @@ header {
   background-color: #015959;
   width: 20%;
   min-height: 100%;
+  position: fixed;
   text-align: left;
 }
 main {
   width: 80% !important;
+  margin-left: 20%;
 }
 
 nav {
@@ -118,7 +120,7 @@ ul li a {
   margin-left: 10px;
 }
 
-.progress {
+.progress-cont {
   display: flex;
   margin: 5% 0;
   width: 60%;
@@ -244,21 +246,28 @@ text-decoration: none;
       flex-direction: column;
       gap: 20px;
   }
-
-  .bottom a{
-      display: flex;
+.bottom .comp{
+     display: flex;
       gap:10px;
       align-items: center;
       text-decoration: none;
-  }
-  .bottom a p{
+      position: relative;
+
+}
+
+  .comp p{
       font-size: 1vw;
       color:#111;
+      position: absolute;
+      top:50%;
+      left:5%;
+      transform: translateY(-50%);
   }
 
-  .bottom a svg{
+  .comp svg{
       color:#015959;
       font-weight: 600;
+      font-size: 24px;
   }
   
   .subtasks{
@@ -304,11 +313,6 @@ text-decoration: none;
       background-color:#015959;
   }
 
-  /* .details::before{
-      content: "";
-      width:2%;
-      height: 70%;
-      background-color: #015959;
-      position: absolute;
-      left:0;
-  } */
+
+  /* media queries */
+
