@@ -13,7 +13,7 @@ class User(UserMixin,db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer,primary_key = True)
-    fullname = db.Column(db.String(255),nullable = False,unique = True)
+    fullname = db.Column(db.String(255),nullable = False)
     role = db.Column(db.String(255),nullable = False)
     bio = db.Column(db.String(255))
     pic_path = db.Column(db.String(255),default='avtar.png')
@@ -21,6 +21,7 @@ class User(UserMixin,db.Model):
     secure_password = db.Column(db.String(255),nullable = False) 
     projects =  db.relationship('Project',backref = 'user',passive_deletes = True)
     members =  db.relationship('TeamMembers',backref = 'user')
+    uname = db.Column(db.String(255))
    
     def save_user(self):
         db.session.add(self)
@@ -46,6 +47,7 @@ class User(UserMixin,db.Model):
 class Project(db.Model):
 
     __tablename__ = 'projects'
+
 
     id = db.Column(db.Integer,primary_key = True)
     name = db.Column(db.String(255),nullable = False)

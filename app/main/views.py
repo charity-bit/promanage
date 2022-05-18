@@ -230,8 +230,11 @@ def edit(project_id):
 
     elif request.method == 'POST':
         project.name = edit_form.name.data
+        project.alias = edit_form.uploader.data
+        project.description = edit_form.details.data
+        project.completion_date = edit_form.completion_date.data
         db.session.commit()
-        return render_template('edit_project.html', edit_form = edit_form, project = project)
+        return redirect(url_for('main.home'))
 
 
     else:
