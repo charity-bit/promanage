@@ -12,38 +12,52 @@
 </head>
 
 <body>
-    <div class="container ">
+    <div class="container-fluid">
         
-        <div class="row d-flex justify-content-center" >
-            
-            <div class="col-md-7 ml-5">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Sign up</h3>
-                    </div>
-                    <div class="card-body">
-                        {{ wtf.quick_form(registration_form) }}
-                    </div>
-                
-     
+        <div class="row justify-content-center align-items-center">
+        <header class="col-md-5 pic"></header>
+        <main class="col-md-6">
+
+            <div class="card">
+                <div class="card-header"> Login here </div>
+                <div class="card-body">
+                    {{ wtf.quick_form(registration_form) }}
+                </div>
             </div>
-        </div>
+            
+        </main>
+
+    </div>
+        
     </div>   
     
      
 </body>
 <style>
-    body{
+.card-header{
+    color: #015959;
+}
+
+
+header {
     background-color: #015959;
-    background-image: url(https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80);
-    background-repeat: no-repeat;
-    
+    background: linear-gradient(#0159598f, #0159597f),url(https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80);
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
     
 }
+
+main{
+    margin-top: 6rem;
+}
+
 
 form{
     margin-top: 5vh;
     color: #037979;
+    height: 50%;
 
 }
 
