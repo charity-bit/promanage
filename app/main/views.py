@@ -19,6 +19,6 @@ def home():
 
     return render_template('home.html')
 
-@main.route('/projects/details')
+@main.route('/project/details')
 def project_details():
     return render_template('details.html')
