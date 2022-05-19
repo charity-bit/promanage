@@ -62,7 +62,9 @@
 
 
         <section id="tasks">
-             
+
+
+            {% if count > 0 %} 
             <div class="tasks">
             
                
@@ -133,6 +135,14 @@
 
                 {% endfor %}
             </div>
+
+            {% else %}
+             <div class="tasks">
+              <h3>You do not have any Teams yet</h3>
+
+    
+                  </div>
+            {% endif %}
             
   
         </section>

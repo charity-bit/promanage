@@ -245,9 +245,11 @@ def my_teams(id):
     user = User.query.filter_by(id = id)
     teams = TeamMembers.query.filter_by(user_id = id)
 
+    count = teams.count()
+
     
     
-    return render_template('teams.html',user = user,id = id,teams = teams)
+    return render_template('teams.html',user = user,id = id,teams = teams,count = count)
 
 @main.route('/projects')
 def projects():
