@@ -2,7 +2,7 @@ import datetime
 from flask import render_template,flash,redirect,url_for
 from . import main
 from . forms import ProjectForm, SubtaskForm, MemberForm
-from flask_login import current_user
+from flask_login import current_user, login_required
 
 from ..models import Project,User,TeamMembers,SubTask
 
@@ -12,6 +12,7 @@ def index():
     return render_template('index.html')
 
 @main.route('/project/new',methods=['POST','GET'])
+@login_required
 def new_project():
 
     form = ProjectForm()
@@ -51,11 +52,12 @@ def new_project():
             new_project = Project(name = project_name,alias = project_alias,description = project_details,owner_id = current_user.id,completion_date = completion_date )
             new_project.save_project()
             
-            return redirect(url_for('main.index'))
+            return redirect(url_for('main.home'))
 
     return render_template('new_project.html', form = form)
 
 @main.route('/home')
+@login_required
 def home():
 
     projects = Project.query.all()
@@ -115,6 +117,7 @@ def home():
     return render_template('home.html',projects = recents,iscomplete  = iscomplete,notcomplete = notcomplete)
 
 @main.route('/project/details/<int:id>')
+@login_required
 def project_details(id):
     project = Project.query.filter_by(id = id).first()
     current_user_id = current_user.id
@@ -149,6 +152,7 @@ def project_details(id):
     return render_template('details.html',id = id,project = project)
 
 @main.route('/project/<int:id>/add-subtask',methods=['POST','GET'])
+@login_required
 def add_subtask(id):
 
     subtasks_form = SubtaskForm()
@@ -194,6 +198,7 @@ def add_subtask(id):
     return render_template('subtasks.html', subtasks_form = subtasks_form,id = id)
 
 @main.route('/project/<int:id>/add-member',methods=['POST','GET'])
+@login_required
 def member(id):
 
     member_form = MemberForm()
@@ -226,7 +231,7 @@ def member(id):
         elif teams.count() > 0:
             for team in teams:
                 if team.project_id == id:
-                    flash("already added")
+                    flash("already added",category="error")
                 else:
                     member = TeamMembers(user_id = user.id,project_id = id)
                     member.save_member()
@@ -244,6 +249,7 @@ def member(id):
 
 
 @main.route('/user/<int:id>/teams')
+@login_required
 def my_teams(id):
     id = current_user.id
     user = User.query.filter_by(id = id)
@@ -256,6 +262,7 @@ def my_teams(id):
     return render_template('teams.html',user = user,id = id,teams = teams,count = count)
 
 @main.route('/projects')
+@login_required
 def projects():
 
     projects = Project.query.all()
