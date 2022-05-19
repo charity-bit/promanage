@@ -223,15 +223,19 @@ def member(id):
 
         
         
-        else:
+        elif teams.count() > 0:
             for team in teams:
                 if team.project_id == id:
                     flash("already added")
-                
-                elif not team.project_id:
+                else:
                     member = TeamMembers(user_id = user.id,project_id = id)
                     member.save_member()
-                    return redirect(url_for('main.project_details',id = id))
+            return redirect(url_for('main.project_details',id = id))
+        elif teams.count() == 0:
+            member = TeamMembers(user_id = user.id,project_id = id)
+            member.save_member()
+            return redirect(url_for('main.project_details',id = id))
+
         
 
 
