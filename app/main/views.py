@@ -64,10 +64,6 @@ def home():
 
     projects = Project.query.all()
 
-    # query state projects
-    # Todo: remember to query projects from Members
-    #and loop to compare both user_id and project_id
-    # avoid double enteries in teams
     completeprojects =Project.query.filter_by( iscomplete = True)
     not_completeprojects = Project.query.filter_by(iscomplete = False)
 
@@ -95,12 +91,32 @@ def home():
 
 
         project.save_project()
+
+    recents = []
+
+    rev = projects[::-1]
+
+
+    if len(rev) == 0:
+        recents = []
+        print(len(recents))
+
+    if len(rev) > 0 and len(rev) <=  3:
+        for i in range(len(rev)):
+            recents.append(rev[i])
+            print(len(recents))
+    if len(rev) > 3:
+        for i in range(3):
+            recents.append(rev[i])
+
+
+
         
 
          
 
 
-    return render_template('home.html',projects = projects,iscomplete  = iscomplete,notcomplete = notcomplete)
+    return render_template('home.html',projects = recents,iscomplete  = iscomplete,notcomplete = notcomplete)
 
 @main.route('/project/details/<int:id>')
 @login_required
@@ -130,7 +146,7 @@ def project_details(id):
         else:
             subtask.iscomplete = True
             
-            subtask.save_project()
+            subtask.save_subtask()
 
 
         
@@ -138,6 +154,7 @@ def project_details(id):
     return render_template('details.html',id = id,project = project)
 
 @main.route('/project/<int:id>/add-subtask',methods=['POST','GET'])
+@login_required
 def add_subtask(id):
 
     subtasks_form = SubtaskForm()
@@ -183,6 +200,7 @@ def add_subtask(id):
     return render_template('subtasks.html', subtasks_form = subtasks_form,id = id)
 
 @main.route('/project/<int:id>/add-member',methods=['POST','GET'])
+@login_required
 def member(id):
 
     member_form = MemberForm()
@@ -190,7 +208,14 @@ def member(id):
         email = member_form.email.data
 
         user = User.query.filter_by(email = email).first()
+
         
+        teams = TeamMembers.query.filter_by(user_id = user.id)
+        
+       
+
+
+
 
         project = Project.query.filter_by(id = id).first()
 
@@ -203,11 +228,21 @@ def member(id):
         elif project.owner_id != current_user.id:
             flash('You are not allowed to add a member,Please consult the project owner',category = "error")
 
-        else:
+        
+        
+        elif teams.count() > 0:
+            for team in teams:
+                if team.project_id == id:
+                    flash("already added",category="error")
+                else:
+                    member = TeamMembers(user_id = user.id,project_id = id)
+                    member.save_member()
+            return redirect(url_for('main.project_details',id = id))
+        elif teams.count() == 0:
             member = TeamMembers(user_id = user.id,project_id = id)
             member.save_member()
-
             return redirect(url_for('main.project_details',id = id))
+
         
 
 
@@ -255,3 +290,26 @@ def delete(project_id):
 
 
 
+
+@main.route('/user/<int:id>/teams')
+@login_required
+def my_teams(id):
+    id = current_user.id
+    user = User.query.filter_by(id = id)
+    teams = TeamMembers.query.filter_by(user_id = id)
+
+    count = teams.count()
+
+    
+    
+    return render_template('teams.html',user = user,id = id,teams = teams,count = count)
+
+@main.route('/projects')
+@login_required
+def projects():
+
+    projects = Project.query.all()
+
+    rev = projects[::-1]
+
+    return render_template('projects.html',projects = rev)

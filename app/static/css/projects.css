@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Koulen&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
+body {
+  display: flex;
+}
+header {
+  background-color: #015959;
+  width: 20%;
+  min-height: 100%;
+  position: fixed;
+  text-align: left;
+}
+
+main {
+  width: 80% !important;
+  margin-left: 20%;
+}
+
+nav {
+  margin-top: 10%;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.logo {
+  margin: 15% 10%;
+}
+.logo p {
+  font-family: "Koulen", sans-serif;
+  font-weight: 700;
+  font-size: 2vw;
+  color: white;
+}
+
+.logo p span {
+  font-size: 1vw;
+}
+.main-mu {
+  color: white;
+  margin: 10% 0;
+}
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+}
+ul li a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: white;
+}
+header nav ul li a svg{
+  margin-top: -12%;
+}
+
+#greeting {
+  width: 80%;
+  margin: 5% auto;
+}
+
+.great-cont {
+  display: flex;
+  justify-content: space-between;
+}
+
+.great p {
+  color: #015959;
+  font-size: 2vw;
+  font-weight: 500;
+}
+.great p span {
+  font-size: 1vw !important;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 10%;
+  display: block !important;
+}
+.search {
+  display: flex;
+  gap: 20px !important;
+  background-color: #c4c4c4;
+  width: 20%;
+  padding: 1% 2%;
+  align-self: flex-start;
+  border-radius: 15px;
+}
+.search input {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  outline: none;
+  width: 100%;
+}
+
+
+#tasks {
+  width: 80%;
+  margin: 5% auto;
+}
+
+.tasks h3 {
+  font-size: 1.5vw;
+  color: #015959;
+}
+
+.tasks{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.tasks-cont {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.details{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 4%;
+    border-radius: 34px;
+    text-decoration: none;
+    position: relative;
+}
+
+.top{
+    display: flex;
+    justify-content: space-between;
+}
+.top h2{
+    font-size: 1.7vw;
+    color:#015959;
+}
+
+.top a {
+    font-size: 1vw;
+    text-decoration: none;
+    color: #015959;
+    display: flex;
+    align-items: center;
+  }
+  .top a svg {
+    font-size: 1.2vw;
+    margin-left: 10px;
+  }
+
+  .bottom{
+      margin-top: 3%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+  }
+.bottom .comp{
+     display: flex;
+      gap:10px;
+      align-items: center;
+      text-decoration: none;
+      position: relative;
+
+}
+
+  .comp p{
+      font-size: 1vw;
+      color:#111;
+      position: absolute;
+      top:50%;
+      left:5%;
+      transform: translateY(-50%);
+  }
+
+  .comp svg{
+      color:#015959;
+      font-weight: 600;
+      font-size: 24px;
+  }
+  
+  .subtasks{
+      margin:5% 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap:10px;
+  }
+  .task-a,.task-b{
+      width: 85%;
+      margin-left: auto;
+      background-color: rgba(196, 196, 196, 0.14);
+      align-items: center;
+      display: flex;
+      gap:20px;
+      padding:2%;
+      border-radius: 10px;
+  }
+  .task-a a,.task-b a{
+    align-self: flex-start;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: #015959;
+    color: #fff;
+    padding: .8%;
+
+  }
+
+  .task-a svg,.task-b svg{
+      color: #fff;
+  }
+
+
+  .task-a p,.task-b p{
+      font-size: 1vw;
+      margin-top: 1%;
+  }
+
+  hr{
+      height: 3px;
+      background-color:#015959;
+  }
+
+
+  /* media queries */
+

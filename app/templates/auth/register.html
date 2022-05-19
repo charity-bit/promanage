@@ -13,16 +13,26 @@
 
 <body>
     <div class="container-fluid">
-        
         <div class="row justify-content-center align-items-center">
         <header class="col-md-5 pic"></header>
         <main class="col-md-6">
 
             <div class="card">
+
+                {% for message in get_flashed_messages() %}
+
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+
+                {% endfor %}
+
                 <div class="card-header"> Register here </div>
                 <div class="card-body">
                     {{ wtf.quick_form(registration_form) }}
                 </div>
+
             </div>
             
         </main>
